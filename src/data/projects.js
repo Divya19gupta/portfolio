@@ -1,0 +1,76 @@
+export const projects = {
+  research: [
+    {
+      type: 'thesis',
+      name: 'PrepBot — AI Interview Simulator',
+      desc: "Master's thesis on fairness in LLM-based interview evaluation.",
+      tags: ['LLM', 'Fairness', 'React', 'Node'],
+      link: '#',
+    },
+    {
+      type: 'open source',
+      name: 'Tamarin-Prover Frontend',
+      desc: 'CISPA open source contribution — protocol visualization tooling.',
+      tags: ['Haskell', 'D3.js', 'TypeScript'],
+      link: '#',
+    },
+    {
+      type: 'seminar',
+      name: 'Hindi Morphological Inflection',
+      desc: 'CRF vs LSTM comparison for morphological inflection generation.',
+      tags: ['NLP', 'CRF', 'LSTM'],
+      link: '#',
+    },
+    {
+      type: 'fellowship',
+      name: 'Technical AI Safety Fellowship',
+      desc: 'AI Safety Saarland, Jan 2026 cohort.',
+      tags: ['AI Safety'],
+      link: '#',
+    },
+  ],
+  development: [
+    {
+      type: 'ai product',
+      name: 'Zapply — AI Cover Letter Generator',
+      desc: 'Generates tailored cover letters from job postings and resumes.',
+      tags: ['Flask', 'React', 'GPT-4.1'],
+      link: '#',
+    },
+    {
+      type: 'ml',
+      name: 'Currywurst or Curry',
+      desc: 'Image classifier distinguishing currywurst from curry dishes.',
+      tags: ['FastAI', '86% acc'],
+      link: '#',
+    },
+    {
+      type: 'ml',
+      name: 'Titanic Survival Prediction',
+      desc: 'Kaggle competition entry using gradient boosting.',
+      tags: ['XGBoost', 'Kaggle', '86.6%'],
+      link: '#',
+    },
+    {
+      type: 'ai product',
+      name: 'TradeWise AI',
+      desc: 'RAG-powered stock research and insights platform.',
+      tags: ['LangChain', 'RAG'],
+      link: '#',
+    },
+    {
+      type: 'full stack',
+      name: 'OliveHub — Alumni Network',
+      desc: 'Alumni networking platform with AI-moderated posts.',
+      tags: ['Next.js', 'Gemini'],
+      link: '#',
+    },
+    {
+      type: 'iot',
+      name: 'NutriScan',
+      desc: 'NFC-based nutrition scanning device.',
+      tags: ['Arduino', 'NFC', 'IoT'],
+      link: '#',
+    },
+  ],
+};
