@@ -8,6 +8,8 @@ export default function Projects({ active }) {
 
   return (
     <section className={`page${active ? ' active' : ''}`} id="page-projects">
+
+      
       <div className="page-title-row">
         <svg className="title-doodle" viewBox="0 0 36 20" aria-hidden="true">
           <path d="M12 2 C 4 2, 4 9, 8 10 C 4 11, 4 18, 12 18" strokeWidth="1.8" fill="none" />
@@ -51,7 +53,7 @@ export default function Projects({ active }) {
                   </span>
                 ))}
               </div>
-              <a className="card-link mono" href={p.link} target="_blank" rel="noreferrer">
+              <a className="card-link mono" href="https://github.com/Divya19gupta" target="_blank" rel="noreferrer">
                 View →
               </a>
             </div>

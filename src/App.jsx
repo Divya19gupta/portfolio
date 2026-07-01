@@ -8,8 +8,6 @@ const PAGES = ['home', 'projects', 'journey'];
 
 export default function App() {
   const [current, setCurrent] = useState(0);
-  // "ready" now only affects the terminal box inside Home (scoped via local
-  // CSS variables) — it no longer flips the whole page's theme.
   const [ready, setReady] = useState(false);
 
   function goTo(i) {

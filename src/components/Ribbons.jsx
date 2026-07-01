@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 
-// Holi-inspired palette: magenta, turmeric yellow, marigold orange, teal, indigo, rose.
 const COLORS = ['#e63988', '#ffb627', '#ff7a3c', '#2ec4b6', '#6a4fd6', '#ff5c8a'];
 const MAX_PARTICLES = 320;
 
@@ -65,8 +64,6 @@ export default function Ribbons({ robotRef, aligned }) {
       }
 
       const isAligned = alignedRef.current;
-      // Once "ready", stop spawning new particles entirely. Existing ones
-      // just finish fading out naturally instead of an abrupt cutoff.
       if (!isAligned) {
         for (let i = 0; i < 4; i++) spawn(originX, originY);
       }

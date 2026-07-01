@@ -2,23 +2,20 @@ import { useEffect, useRef, useState } from 'react';
 import Ribbons from './Ribbons';
 import RobotSvg from './RobotSvg';
 
-// AI/ML + full-stack flavored status line, not security/compliance jargon —
-// this should read like "a well-built, production-ready application", not an audit.
 const STATUS_LINES = [
-  { text: 'spinning up the model...', ok: false },
-  { text: 'data pipeline: healthy', ok: true },
-  { text: 'unit tests: passed', ok: true },
-  { text: 'inference latency: optimized', ok: true },
-  { text: 'model accuracy: validated', ok: true },
-  { text: 'UI/UX: polished', ok: true },
-  { text: 'system: production-ready ✓', ok: true },
+  { text: 'loading AI modules...', ok: false },
+  { text: 'full-stack engine: online', ok: true },
+  { text: 'machine learning: active', ok: true },
+  { text: 'human-AI interaction: enabled', ok: true },
+  { text: 'trustworthy AI: researching', ok: true },
+  { text: 'coffee level: sufficient', ok: true },
+  { text: 'ready to build ✓', ok: true },
 ];
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// Small generic glyphs — deliberately not the official GitHub/LinkedIn marks.
 function CodeIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -159,7 +156,7 @@ export default function Home({ active, ready, setReady }) {
               <div className="eyebrow">
                 <span className="eyebrow-rule" />
                 <span className="eyebrow-dot" />
-                <p className="eyebrow-text mono">AI/ML Engineer · Full Stack Developer · Researcher</p>
+                <p className="eyebrow-text mono">Applied AI • Full-Stack Development • Human-AI Interaction</p>
                 <span className="eyebrow-dot" />
                 <span className="eyebrow-rule" />
               </div>
@@ -168,13 +165,12 @@ export default function Home({ active, ready, setReady }) {
                 Building things that would've seemed like magic to my younger self.
               </blockquote>
 
-              <div className="meta-divider" />
 
               <p className="details-text">
-                I'm an MSc Computer Science student at Saarland University and a Research Assistant at
-                CISPA, spending my days teaching machines to be a little fairer than the world that
-                trained them. Outside of that, I'm probably knee-deep in a new side project, a research
-                paper, or a browser tab I promised myself I'd read weeks ago. 
+                I'm a Master's student in Computer Science at Saarland University, 
+                where I get to turn curiosity into software and occasionally into research. 
+                These days, I'm building full-stack applications, developing AI-powered systems, 
+                and researching Human-AI Interaction and Trustworthy AI through my master's thesis.
               </p>
 
               <div className="links">
