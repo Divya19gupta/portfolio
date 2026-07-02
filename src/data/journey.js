@@ -5,8 +5,8 @@ export const steps = [
     role: 'SWE Intern',
     org: 'FICO',
     x: 5,
-    y: 90,
-    labelPos: 'top',
+    y: 82,
+    labelPos: 'bottom',
     labelAlign: 'left',
   },
   {
@@ -44,8 +44,8 @@ export const steps = [
     date: 'AUG 2024',
     role: 'Research Assistant',
     org: 'CISPA Helmholtz',
-    x: 66,
-    y: 54,
+    x: 60,
+    y: 62,
     labelPos: 'top',
     labelAlign: 'center',
   }
@@ -55,15 +55,15 @@ export const now = {
   id: 7,
   date: 'NOW · 2026',
   role: 'Open to HiWi · Werkstudent · AI/ML roles',
-  x: 92,
-  y: 8,
+  x: 88,
+  y: 6,
 };
 
 
 export const cta = {
   id: 8,
-  x: 98,
-  y: 1,
+  x: 105,
+  y: 2,
 };
 
 export const doodles = [

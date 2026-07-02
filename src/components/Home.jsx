@@ -175,13 +175,13 @@ export default function Home({ active, ready, setReady }) {
                   <FileIcon /> CV
                 </a>
                 <a className="link-btn" href="https://github.com/Divya19gupta" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile">
-                  <CodeIcon /> GitHub ↗
+                  <CodeIcon /> GitHub 
                 </a>
                 <a className="link-btn" href="https://www.linkedin.com/in/divya-gupta-3a505617a" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile">
-                  <LinkIcon /> LinkedIn ↗
+                  <LinkIcon /> LinkedIn 
                 </a>
                 <a className="link-btn" href="mailto:divya2207.work@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Send email to Divya Gupta">
-                  <MailIcon /> Email ↗
+                  <MailIcon /> Email 
                 </a>
               </div>
             </div>

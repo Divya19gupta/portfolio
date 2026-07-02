@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { steps, now, cta, doodles } from '../data/journey';
 import RobotSvg from './RobotSvg';
 
-const PAD = { top: 90, right: 190, bottom: 50, left: 30 };
+const PAD_BASE = { top: 115, right: 195, bottom: 75, left: 24 };
 
 function smoothPath(points) {
   if (points.length < 2) return '';
@@ -76,6 +76,13 @@ export default function Journey({ active }) {
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
+
+  const PAD = useMemo(() => ({
+    top: Math.min(PAD_BASE.top, size.h * 0.3),
+    right: Math.min(PAD_BASE.right, Math.max(90, size.w * 0.22)),
+    bottom: Math.min(PAD_BASE.bottom, size.h * 0.22),
+    left: Math.max(16, size.w * 0.025),
+  }), [size.w, size.h]);
 
   const innerW = Math.max(size.w - PAD.left - PAD.right, 1);
   const innerH = Math.max(size.h - PAD.top - PAD.bottom, 1);

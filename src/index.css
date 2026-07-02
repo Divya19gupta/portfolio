@@ -332,7 +332,7 @@ body{
 
 .road-wrap{
   width: 100%;
-  max-width: 960px;
+  max-width: 1220px;
   margin: var(--gap-md) auto 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -341,9 +341,9 @@ body{
 .road-container{
   position: relative;
   width: 100%;
-  min-width: 720px;
-  height: clamp(280px, 40vh, 400px);
-  height: clamp(280px, 40dvh, 400px);
+  min-width: 700px;
+  height: clamp(300px, 40vh, 410px);
+  height: clamp(300px, 40dvh, 410px);
 }
 
 .road-svg{
@@ -488,7 +488,8 @@ body{
 }
 .road-now .road-label.now-label{
   position: static;
-  margin-top: 8px;
+  margin-top: 20px;
+  max-width: 130px;
   transform: none;
   text-align: center;
   border-color: var(--accent-green);
@@ -498,6 +499,7 @@ body{
 .road-cta{
   position: absolute;
   transform: translate(-50%, -50%);
+  width: 126px;
   border: 1.5px dashed var(--accent);
   border-radius: 8px;
   padding: 5px 9px;
@@ -560,9 +562,30 @@ body{
 }
 
 @media (max-width: 640px){
-  .road-container{ min-width: 740px; height: 560px; padding: 50px 80px 24px 16px; }
-  .road-label{ max-width: 112px; padding: 5px 7px; }
+  .road-container{ min-width: 640px; height: 460px; }
+  .road-label{ max-width: 100px; padding: 4px 6px; }
+  .road-label-role{ font-size: 12px; }
+  .road-label-org{ font-size: 10px; }
+  .road-stop{ width: 20px; height: 20px; font-size: 9px; }
+  .road-token{ width: 26px; height: 26px; }
+  .road-token svg{ width: 15px; height: 15px; }
+  .now-pulse-road{ width: 32px; height: 32px; top: 16px; }
+  .road-cta{ width: 108px; padding: 4px 7px; }
   .road-doodle{ display: none; }
+}
+
+@media (max-width: 420px){
+  .road-container{ min-width: 560px; height: 400px; }
+  .road-label{ max-width: 88px; padding: 4px 5px; }
+  .road-label-date{ font-size: 7px; }
+  .road-label-role{ font-size: 11px; }
+  .road-label-org{ font-size: 9.5px; }
+  .road-stop{ width: 18px; height: 18px; font-size: 8.5px; }
+  .road-token{ width: 24px; height: 24px; }
+  .road-token svg{ width: 13px; height: 13px; }
+  .road-cta{ width: 96px; padding: 4px 6px; }
+  .road-cta-label{ font-size: 8px; }
+  .road-cta-label strong{ font-size: 9px; }
 }
 ::-webkit-scrollbar{ width: 8px; height: 8px; }
 ::-webkit-scrollbar-track{ background: transparent; }
