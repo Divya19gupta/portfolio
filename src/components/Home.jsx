@@ -176,14 +176,14 @@ export default function Home({ active, ready, setReady }) {
                 <a className="link-btn primary" href="/resume.pdf" download="Divya_Gupta_Resume.pdf">
                   <FileIcon /> CV
                 </a>
-                <a className="link-btn" href="https://github.com/Divya19gupta" target="_blank" rel="noreferrer">
-                  <CodeIcon /> GitHub
+                <a className="link-btn" href="https://github.com/Divya19gupta" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile" aria-label="Open GitHub profile">
+                  <CodeIcon /> GitHub ↗
                 </a>
-                <a className="link-btn" href="https://www.linkedin.com/in/divya-gupta-3a505617a" target="_blank" rel="noreferrer">
-                  <LinkIcon /> LinkedIn
+                <a className="link-btn" href="https://www.linkedin.com/in/divya-gupta-3a505617a" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile">
+                  <LinkIcon /> LinkedIn ↗
                 </a>
-                <a className="link-btn" href="mailto:divya2207.work@gmail.com" target="_blank" rel="noreferrer">
-                  <MailIcon /> Email
+                <a className="link-btn" href="mailto:divya2207.work@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Send email to Divya Gupta">
+                  <MailIcon /> Email ↗
                 </a>
               </div>
             </div>

@@ -53,8 +53,9 @@ export default function Projects({ active }) {
                   </span>
                 ))}
               </div>
-              <a className="card-link mono" href={p.link || 'https://github.com/Divya19gupta'}  target="_blank" rel="noreferrer">
-                View →
+              <a className="card-link mono" href={p.link || 'https://github.com/Divya19gupta'}  target="_blank" rel="noopener noreferrer"
+  aria-label={`Open ${p.name}`}>
+                View ↗
               </a>
             </div>
           ))
