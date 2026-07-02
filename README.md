@@ -1,7 +1,6 @@
 # Divya Gupta — Portfolio
 
 A modern, interactive portfolio showcasing my work in AI, Machine Learning, Human-AI Interaction, and Full-Stack Development.
-**Live Website:** https://your-portfolio.vercel.app
 
 ---
 
