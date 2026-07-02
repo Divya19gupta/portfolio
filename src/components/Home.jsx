@@ -165,7 +165,6 @@ export default function Home({ active, ready, setReady }) {
                 Building things that would've seemed like magic to my younger self.
               </blockquote>
 
-
               <p className="details-text">
                 I'm a Master's student in Computer Science at Saarland University, 
                 where I get to turn curiosity into software and occasionally into research. 

@@ -53,7 +53,7 @@ export default function Projects({ active }) {
                   </span>
                 ))}
               </div>
-              <a className="card-link mono" href="https://github.com/Divya19gupta" target="_blank" rel="noreferrer">
+              <a className="card-link mono" href={p.link || 'https://github.com/Divya19gupta'}  target="_blank" rel="noreferrer">
                 View →
               </a>
             </div>

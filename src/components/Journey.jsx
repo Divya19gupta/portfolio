@@ -1,123 +1,162 @@
-import { steps } from '../data/journey';
+import { useEffect, useRef, useState } from 'react';
+import { steps, now, cta, doodles } from '../data/journey';
+import RobotSvg from './RobotSvg';
+
+const PAD = { top: 90, right: 190, bottom: 50, left: 30 };
+
+function smoothPath(points) {
+  if (points.length < 2) return '';
+  let d = `M ${points[0].x} ${points[0].y}`;
+  for (let i = 0; i < points.length - 1; i++) {
+    const p0 = points[i - 1] || points[i];
+    const p1 = points[i];
+    const p2 = points[i + 1];
+    const p3 = points[i + 2] || p2;
+    const cp1x = p1.x + (p2.x - p0.x) / 6;
+    const cp1y = p1.y + (p2.y - p0.y) / 6;
+    const cp2x = p2.x - (p3.x - p1.x) / 6;
+    const cp2y = p2.y - (p3.y - p1.y) / 6;
+    d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
+  }
+  return d;
+}
+
+function Doodle({ d }) {
+  const style = { left: `${d.x}%`, top: `${d.y}%` };
+
+  if (d.type === 'dashed-circle') {
+    return (
+      <svg className="road-doodle doodle-dashed-circle" style={{ ...style, width: d.size, height: d.size }} viewBox="0 0 60 60" aria-hidden="true">
+        <circle cx="30" cy="30" r="26" strokeWidth="2" strokeDasharray="3 7" fill="none" />
+      </svg>
+    );
+  }
+  if (d.type === 'asterisk') {
+    return (
+      <svg className="road-doodle" style={{ ...style, width: d.size, height: d.size, color: d.color }} viewBox="0 0 20 20" aria-hidden="true">
+        <path d="M10 1 V19 M2.5 5.5 L17.5 14.5 M17.5 5.5 L2.5 14.5" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (d.type === 'squiggle') {
+    return (
+      <svg className="road-doodle" style={{ ...style, width: 70, height: 28, color: d.color }} viewBox="0 0 70 28" aria-hidden="true">
+        <path d="M2 20 Q 14 4, 26 16 T 50 12 T 68 18" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+      </svg>
+    );
+  }
+  if (d.type === 'dots') {
+    return (
+      <div className="road-doodle road-doodle-dots" style={style}>
+        <span /><span /><span />
+      </div>
+    );
+  }
+  if (d.type === 'caption') {
+    return (
+      <div className="road-doodle road-caption" style={style}>
+        <span className="road-caption-text mono">{d.text}</span>
+      </div>
+    );
+  }
+  return null;
+}
 
 export default function Journey({ active }) {
+  const containerRef = useRef(null);
+  const [size, setSize] = useState({ w: 1000, h: 600 });
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      const { width, height } = entries[0].contentRect;
+      setSize({ w: width, h: height });
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const innerW = Math.max(size.w - PAD.left - PAD.right, 1);
+  const innerH = Math.max(size.h - PAD.top - PAD.bottom, 1);
+  const toPx = (pt) => ({
+    x: PAD.left + (pt.x / 100) * innerW,
+    y: PAD.top + (pt.y / 100) * innerH,
+  });
+
+  const allStops = [...steps, now];
+  const pixelStops = allStops.map(toPx);
+  const roadPath = smoothPath(pixelStops);
+  const dashedPath = smoothPath([toPx(now), toPx(cta)]);
+
   return (
     <section className={`page${active ? ' active' : ''}`} id="page-journey">
-     
-    <div className="journey-layout">
-      <div className="pipeline">
-       
-        <svg className="snake-path" viewBox="0 0 48 800" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="snakeFade" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.9" />
-              <stop offset="78%" stopColor="var(--accent)" stopOpacity="0.55" />
-              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M24 0
-               C 42 40, 6 80, 24 120
-               C 42 160, 6 200, 24 240
-               C 42 280, 6 320, 24 360
-               C 42 400, 6 440, 24 480
-               C 42 520, 6 560, 24 600
-               C 42 640, 6 680, 24 720
-               C 34 745, 14 765, 24 800"
-            fill="none"
-            stroke="url(#snakeFade)"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-          />
+      <div className="page-title-row">
+        <svg className="title-doodle" viewBox="0 0 36 20" aria-hidden="true">
+          <path d="M4 14 L14 4 L20 10 L32 2" strokeWidth="1.8" fill="none" strokeLinecap="round" />
+          <circle cx="32" cy="2" r="1.8" fill="var(--muted)" stroke="none" />
         </svg>
+        <div className="page-title mono">journey</div>
+      </div>
 
-        {steps.map((s, idx) => (
-          <div key={s.date} className={`step${s.now ? ' now' : ''}`}>
-            {s.now && <span className="now-pulse" />}
-            <div className="step-marker mono">{s.now ? '★' : idx + 1}</div>
-            <div className="step-date mono">{s.date}</div>
-            <div className="step-role">{s.role}</div>
-            {s.org && <div className="step-org">{s.org}</div>}
+      <div className="road-wrap">
+        <div className="road-container" ref={containerRef}>
+          {doodles.map((d, i) => <Doodle key={i} d={d} />)}
+
+          <svg className="road-svg" width={size.w} height={size.h} aria-hidden="true">
+            <defs>
+              <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#e6398f" />
+                <stop offset="35%" stopColor="#2ec4b6" />
+                <stop offset="65%" stopColor="#ffb627" />
+                <stop offset="100%" stopColor="#6a4fd6" />
+              </linearGradient>
+            </defs>
+            <path d={roadPath} className="road-base" fill="none" />
+            <path d={roadPath} className="road-center" fill="none" />
+            <path d={dashedPath} className="road-dashed" fill="none" />
+          </svg>
+
+          {pixelStops[0] && (
+            <div className="road-flag" style={{ left: pixelStops[0].x, top: pixelStops[0].y }}>
+              <svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true">
+                <path d="M4 2 V18" stroke="var(--accent-green)" strokeWidth="2" strokeLinecap="round" />
+                <path d="M4 3 L16 6 L4 9 Z" fill="var(--accent-green)" />
+              </svg>
+              <span className="road-flag-label mono">START</span>
+            </div>
+          )}
+
+          {steps.map((s, idx) => {
+            const p = toPx(s);
+            return (
+              <div key={s.id} className="road-point" style={{ left: p.x, top: p.y }}>
+                <div className="road-stop">{idx + 1}</div>
+                <div className={`road-label ${s.labelPos} align-${s.labelAlign}`}>
+                  <div className="road-label-date mono">{s.date}</div>
+                  <div className="road-label-role">{s.role}</div>
+                  {s.org && <div className="road-label-org">{s.org}</div>}
+                </div>
+              </div>
+            );
+          })}
+
+          <div className="road-now" style={{ left: toPx(now).x, top: toPx(now).y }}>
+            <span className="now-pulse-road" />
+            <div className="road-token" aria-label="Current status">
+              <RobotSvg on={true} />
+            </div>
+            <div className="road-label top align-center now-label">
+              <div className="road-label-date mono">{now.date}</div>
+              <div className="road-label-role">{now.role}</div>
+            </div>
           </div>
-        ))}
 
-        <div className="path-tail" aria-hidden="true">
-          <span className="tail-dot" />
-          <span className="tail-dot" />
-          <span className="tail-dot" />
+          <div className="road-cta" style={{ left: toPx(cta).x, top: toPx(cta).y }}>
+            <span className="road-cta-label mono">next stop<br /><strong>your team?</strong></span>
+          </div>
         </div>
       </div>
-     <div className="journey-right">
-
-  <svg
-    className="journey-network"
-    viewBox="0 0 820 420"
-    aria-hidden="true"
-  >
-    <g
-      stroke="var(--border-strong)"
-      strokeWidth="1.5"
-      fill="none"
-      opacity=".55"
-    >
-      <path d="M70 80 L180 120 L310 70 L430 150" />
-      <path d="M180 120 L140 250 L280 320 L430 270" />
-      <path d="M310 70 L330 200 L430 150" />
-      <path d="M140 250 L70 330 L280 320" />
-      <path d="M330 200 L430 270 L380 360" />
-      <path d="M280 320 L380 360" />
-    </g>
-
-    <g fill="white" stroke="var(--fg)" strokeWidth="2">
-      <circle cx="70" cy="80" r="10"/>
-      <circle cx="180" cy="120" r="8"/>
-      <circle cx="310" cy="70" r="12"/>
-      <circle cx="430" cy="150" r="9"/>
-      <circle cx="140" cy="250" r="7"/>
-      <circle cx="330" cy="200" r="6"/>
-      <circle cx="430" cy="270" r="10"/>
-      <circle cx="280" cy="320" r="8"/>
-      <circle cx="70" cy="330" r="9"/>
-      <circle cx="380" cy="360" r="11"/>
-    </g>
-
-    <g fill="var(--accent)">
-      <circle cx="180" cy="120" r="3"/>
-      <circle cx="330" cy="200" r="3"/>
-      <circle cx="280" cy="320" r="3"/>
-      <circle cx="430" cy="270" r="3"/>
-    </g>
-
-  </svg>
-
-  <div className="page-title-row big-title">
-   
-  </div>
-  
-<div className="page-title mono" style={{ fontSize: '38px', letterSpacing: '6px', fontWeight: '800' }}>
-  <svg
-      className="title-doodle"
-      viewBox="0 0 36 20"
-      aria-hidden="true"
-    >
-      <path
-        d="M4 14 L14 4 L20 10 L32 2"
-        strokeWidth="1.8"
-        fill="none"
-        strokeLinecap="round"
-      />
-      <circle
-        cx="32"
-        cy="2"
-        r="1.8"
-        fill="var(--muted)"
-        stroke="none"
-      />
-    </svg>
-  journey
-</div>
-</div>
-    </div>
     </section>
   );
 }
