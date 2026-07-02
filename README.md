@@ -1,4 +1,4 @@
-# Divya Gupta — Portfolio
+# Divya Gupta: Portfolio
 
 A modern, interactive portfolio showcasing my work in AI, Machine Learning, Human-AI Interaction, and Full-Stack Development.
 
