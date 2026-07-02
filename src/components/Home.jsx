@@ -154,11 +154,9 @@ export default function Home({ active, ready, setReady }) {
               </div>
 
               <div className="eyebrow">
-                <span className="eyebrow-rule" />
-                <span className="eyebrow-dot" />
+                
                 <p className="eyebrow-text mono">Applied AI • Full-Stack Development • Human-AI Interaction</p>
-                <span className="eyebrow-dot" />
-                <span className="eyebrow-rule" />
+                
               </div>
 
               <blockquote className="statement">
