@@ -1,48 +1,96 @@
-# &lt;Div&gt;ya Gupta — Portfolio
+# Divya Gupta — Portfolio
 
-A minimal black-and-white single-page portfolio built with Vite + React 18.
+A modern, interactive portfolio showcasing my work in AI, Machine Learning, Human-AI Interaction, and Full-Stack Development.
+**Live Website:** https://your-portfolio.vercel.app
 
-## Structure
+---
 
+## About
+This portfolio highlights my research, open-source contributions, and software engineering projects. It was designed to reflect my interest in building AI-powered systems while maintaining a clean, minimal interface.
+
+Current areas of focus include:
+- 🤖 Large Language Models (LLMs)
+- 🧠 Applied Machine Learning
+- 💻 Full-Stack Development
+- 🤝 Human-AI Interaction
+- 🔬 Trustworthy AI
+
+---
+
+## Features
+- Interactive terminal-inspired landing page
+- Research & Development project showcase
+- Timeline-based journey visualization
+- Responsive design
+- Lightweight React application
+- Smooth animations and custom illustrations
+
+---
+
+## Tech Stack
+
+### Frontend
+- React
+- Vite
+- JavaScript (ES6+)
+- CSS3
+
+### Design
+- Custom SVG illustrations
+- Responsive layouts
+- CSS animations
+- Modern typography
+
+### Deployment
+- Vercel
+
+---
+
+## AI-Assisted Development
+- This portfolio was developed using an AI-assisted engineering workflow with Claude.
+- Claude was used to accelerate UI prototyping, component implementation, and iterative design refinement, while all architecture, feature integration, customization, debugging, project content, and technical decisions were directed and validated by me.
+
+---
+
+## Running Locally
+
+### Clone the repository:
+
+```bash
+git clone https://github.com/Divya19gupta/portfolio.git
 ```
-src/
-  main.jsx            entry point
-  App.jsx              page routing (home/projects/journey) + aligned state
-  index.css            all styles, design tokens as CSS variables
-  components/
-    Nav.jsx             bottom dot navigation + arrows
-    Home.jsx             name typing animation, subtext, robot, links
-    Ribbons.jsx           canvas ribbon animation, anchored to the robot
-    RobotSvg.jsx           the robot icon, color-shifts when "aligned"
-    Doodles.jsx             decorative hand-drawn SVG accents
-    Projects.jsx              Research / Development tabs + cards
-    Journey.jsx                 vertical career pipeline
-  data/
-    projects.js       project list (edit here to add/remove projects)
-    journey.js         career timeline (edit here to add/remove steps)
-```
 
-## Run locally
+### Install dependencies:
 
 ```bash
 npm install
+```
+
+### Start the development server:
+
+```bash
 npm run dev
 ```
 
-Then open the printed local URL (usually `http://localhost:5173`).
-
-## Build for production
+### Create a production build:
 
 ```bash
 npm run build
 ```
 
-Outputs a static `dist/` folder — deploy it directly to Vercel (zero config,
-just point it at this repo) or any static host.
+---
 
-## Notes / things you'll likely want to tweak
+## Project Structure
 
-- **Links**: GitHub/LinkedIn/Email hrefs in `Home.jsx` are still `#` — swap in your real URLs.
-- **Project links**: `link: '#'` in `data/projects.js` — same deal.
-- **Ribbons**: tune `RIBBON_COUNT`, `ANGLE_START`/`ANGLE_END`, and `amp`/`speed` in `Ribbons.jsx` to change density/spread/speed.
-- **Colors**: everything is driven by CSS variables at the top of `index.css` (`:root` and `body.secured`) — change the palette in one place.
+```
+src/
+│
+├── components/
+├── data/
+├── assets/
+├── App.jsx
+└── main.jsx
+```
+---
+
+Built with React, modern AI development tools, and a lot of curiosity.
