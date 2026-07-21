@@ -36,7 +36,14 @@ export const projects = {
       name: 'Zapply — AI Cover Letter Generator',
       desc: 'Built an AI-powered cover letter generator that analyzes resumes and job descriptions to produce ATS-optimized applications using GPT-4.',
       tags: ['Flask', 'React', 'GPT-4.1', 'LLM'],
-      link: 'https://github.com/Divya19gupta/ai-sandbox',
+      link: 'https://zapply-cyan.vercel.app/',
+    },
+    {
+      type: 'ai product',
+      name: 'ByteFlip',
+      desc: "A personal DSA revision tool. Track which problems you've solved, then revise them as flashcards in a shuffled queue, with AI-generated hints when you're stuck.",
+      tags: ['FastAPI', 'Embeddings', 'ChromaDB', 'React'],
+      link: 'https://byte-flip.vercel.app/',
     },
     {
       type: 'computer vision',
